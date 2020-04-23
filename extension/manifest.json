@@ -1,0 +1,44 @@
+{
+    "name": "EsChunk插件",
+    "version": "1.0.0",
+    "manifest_version": 2,
+    "browser_action": {
+        "default_icon": {
+            "16": "images/16.png",
+            "24": "images/24.png",
+            "32": "images/32.png"
+        },
+        "default_title": "EsChunk插件",
+        "default_popup":"options/popup.html"
+    },
+    "background": {
+        "scripts": [
+            "background.js"
+        ]
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "*://127.0.0.1/*"
+            ],
+            "css": [
+                "content/content.css"
+            ],
+            "js": [
+                "content/content.js"
+            ],
+            "all_iframes": true
+        }
+    ],
+    "externally_connectable": {
+        "ids": [
+            "kjamadoeacefeepkbakojebokmfedkkh"
+        ]
+    },
+    "permissions": [
+        "tabs",
+        "management"
+    ],
+
+    "options_page":"options/index.html"
+}

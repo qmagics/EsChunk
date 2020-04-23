@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>IFRAME1</title>
+</head>
+
+<body>
+    <h2>Iframe1</h2>
+
+    <button id="Btn_Start">开始</button>
+    <button id="Btn_End">结束</button>
+    <p id="Content" style="width:200px;height:40px;border:1px solid rgb(161, 219, 241);"></p>
+    <input type="text" id="Input1">
+    <input type="text" id="Input2">
+
+    <script>
+        const EXTENSION_ID = 'lnbolplekednjaejjmofghhmenhdmagl';
+        const APP_ID = 'kjamadoeacefeepkbakojebokmfedkkh';
+
+        //添加页面触发器 -- 部署时修改 
+        document.getElementById('Btn_Start').addEventListener('click', function () {
+            top.ESChunk.start({
+                target: 'iframe',
+                iframeId: 'iframe1',
+                contentIds: ['Content', 'Input1', 'Input2']
+            });
+        });
+
+        document.getElementById('Btn_End').addEventListener('click', function () {
+            top.ESChunk.stop();
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,28 @@
+{
+  "name": "EsChunk服务",
+  "version": "1.0.0",
+  "manifest_version": 2,
+  "app": {
+    "background": {
+      "scripts": [
+        "background.js"
+      ]
+    }
+  },
+  "permissions": [
+    "serial"
+  ],
+  "icons": {
+    "16": "images/16.png",
+    "24": "images/24.png",
+    "32": "images/32.png"
+  },
+  "externally_connectable": {
+    "ids": [
+      "*"
+    ],
+    "matches": [
+      "*://127.0.0.1/*"
+    ]
+  }
+}

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>电子秤插件配置</title>
+    <link rel="stylesheet" href="popup.css">
+</head>
+
+<body>
+    <div class="title">电子秤连接设置</div>
+    <div class="body">
+        <div class="form-group">
+            <label class="label">电子秤串口名称（DisplayName）</label>
+            <select name="port" id="port" class="form-control"></select>
+            <button class="btn" id="BtnRefresh">刷新</button>
+        </div>
+        <div class="form-group">
+            <label class="label">波特率（Bitrate）</label>
+            <select name="bitrate" id="bitrate" class="form-control"></select>
+            <!-- <input type="number" name="bitrate" id="bitrate" class="form-control" /> -->
+        </div>
+        <div class="alert">
+            <div class="alert-title">连接失败，读不出数据？</div>
+            <div class="alert-content">
+                有时因为USB转接口的问题，可能会连接失败，这时可重新点击下方的 <b class="text-primary">刷新连接</b>，直至连接成功。
+            </div>
+        </div>
+
+        <div class="alert">
+            <div class="alert-title">刷新很多次也连不上？</div>
+            <div class="alert-content">
+                在Chrome浏览器地址栏输入<b>chrome://extensions/</b>，确保 <b class="text-primary">EsChunk插件</b> 和 <b
+                    class="text-primary">EsChunk服务</b> 这两个应用都处于开启状态
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <button class="btn btn-primary" id="BtnConfirm">刷新连接</button>
+    </div>
+
+    <script src="./popup.js"></script>
+</body>
+
+</html>
