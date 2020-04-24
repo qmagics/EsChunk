@@ -18,18 +18,37 @@
     <input type="text" id="Input2">
 
     <script>
-        //添加页面触发器 -- 部署时修改 
-        document.getElementById('Btn_Start').addEventListener('click', function () {
-            top.ESChunk.start({
+        // //添加页面触发器 -- 部署时修改 
+        // document.getElementById('Btn_Start').addEventListener('click', function () {
+        //     top.ESChunk.start({
+        //         target: 'iframe',
+        //         iframeId: 'iframe1',
+        //         contentIds: ['Content', 'Input1', 'Input2']
+        //     });
+        // });
+
+        // document.getElementById('Btn_End').addEventListener('click', function () {
+        //     top.ESChunk.stop();
+        // });
+
+        var ESChunk = top.ESChunk;
+
+        setTimeout(() => {
+            var chunk = new ESChunk({
+                id: 'IFRAME1',
                 target: 'iframe',
                 iframeId: 'iframe1',
                 contentIds: ['Content', 'Input1', 'Input2']
-            });
-        });
+            })
 
-        document.getElementById('Btn_End').addEventListener('click', function () {
-            top.ESChunk.stop();
-        });
+            document.getElementById('Btn_Start').addEventListener('click', function () {
+                chunk.start();
+            })
+
+            document.getElementById('Btn_End').addEventListener('click', function () {
+                chunk.stop();
+            })
+        }, 100);
     </script>
 </body>
 
