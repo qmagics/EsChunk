@@ -24,7 +24,7 @@ const BITRATE = 2400;
         //波特率
         bitrate = 0;
 
-    function connectPortByName(name) {
+    function connectPortByName() {
         //获取所有设备并查找需要连接的设备
         chrome.serial.getDevices(function (ports) {
             for (let i = 0; i < ports.length; i++) {

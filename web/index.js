@@ -1,12 +1,11 @@
-// //父页面自身调用
-// var content = document.getElementById('Content');
+document.getElementById('Btn_Start').addEventListener('click', function () {
+    top.ESChunk.start({
+        target: 'top',
+        // iframeId: 'iframe1',
+        contentIds: ['Content', 'Input1', 'Input2']
+    });
+});
 
-// document.getElementById('Btn_Start').addEventListener('click', function () {
-//     ESChunk.getWeight(function (res) {
-//         content.innerHTML = res;
-//     })
-// });
-
-// document.getElementById('Btn_End').addEventListener('click', function () {
-//     ESChunk.stop();
-// });
+document.getElementById('Btn_End').addEventListener('click', function () {
+    top.ESChunk.stop();
+});

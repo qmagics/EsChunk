@@ -1,7 +1,11 @@
+//清单对象
+const manifest = chrome.runtime.getManifest();
+
 //s 配置项--------------
 //event元素对象ID
+const APP_ID = manifest.externally_connectable.ids[0];
+
 const CHUNK_EVENT_ID = 'CHUNK_EVENT_DIV_001';
-const APP_ID = 'kjamadoeacefeepkbakojebokmfedkkh';
 
 //心跳间隔
 const tickInterval = 30;
@@ -13,7 +17,7 @@ const tickInterval = 30;
 let timer = null;
 const EventDiv = document.getElementById(CHUNK_EVENT_ID);
 
-//添加开始侦听器 -- 部署时修改
+//添加开始侦听器
 EventDiv.addEventListener('Start', function () {
     if (timer) return;
 
@@ -28,13 +32,15 @@ EventDiv.addEventListener('Start', function () {
     else if (options.target === 'top') {
         doc = document;
     }
+    else {
+        doc = document;
+    }
 
     if (options.contentIds && options.contentIds.length) {
         options.contentIds.forEach(id => {
             ContentElements.push(doc.getElementById(id));
         });
     }
-
 
     if (ContentElements.length > 0) {
         timer = setInterval(function () {

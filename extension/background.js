@@ -1,6 +1,7 @@
-// console.log('Extension BackgroundJS');
+//清单对象
+const manifest = chrome.runtime.getManifest();
 
-const APP_ID = 'kjamadoeacefeepkbakojebokmfedkkh';
+const APP_ID = manifest.externally_connectable.ids[0];
 
 //获取本地存储的配置信息
 function getConfig() {
