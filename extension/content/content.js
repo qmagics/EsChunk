@@ -128,15 +128,8 @@ const pluginsManager = new PluginsManager();
 (function () {
     const ES_Chunk_Div = document.getElementById('ES_Chunk_Dispatch_Event_Div');
     let options = JSON.parse(ES_Chunk_Div.innerText || null);
-    // let count = 0;
 
     if (ES_Chunk_Div) {
-
-        //先判断一次Es_Chunk_Div是否有触发过New_ESChunk事件,因为dom加载完成后contentScript才触发，会存在漏掉的情况
-        if (options) {
-            OnNewESChunk();
-        }
-
         ES_Chunk_Div.addEventListener('New_ESChunk', () => {
             OnNewESChunk();
         });
@@ -149,12 +142,23 @@ const pluginsManager = new PluginsManager();
     function OnNewESChunk() {
         options = JSON.parse(ES_Chunk_Div.innerText || null);
 
-        // console.log('New_ESChunk的调用次数:', ++count);
-        // console.log('参数:', options);
-
         pluginsManager.create(options);
     }
+
+    runPageScripts('onESChunkContentScriptReady();')
 })();
+
+function runPageScripts(script) {
+    var oldNode = document.getElementById('content_script');
+    if (oldNode) {
+        document.body.removeChild(oldNode);
+    }
+
+    var scriptNode = document.createElement("script");
+    scriptNode.id = 'content_script';
+    scriptNode.text = script;
+    document.body.appendChild(scriptNode);
+};
 
 //需要监听插件被关闭事件，用来清理缓存，取消对app的消息通讯
 //...待完善

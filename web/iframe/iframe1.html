@@ -18,22 +18,24 @@
     <input type="text" id="Input2">
 
     <script>
-        var ESChunk = top.ESChunk || ESChunk;
+        top.ESChunkReady(function () {
+            var ESChunk = top.ESChunk || ESChunk;
 
-        var chunk = new ESChunk({
-            id: 'IFRAME1',
-            target: 'iframe',
-            iframeId: 'iframe1',
-            contentIds: ['Content', 'Input1', 'Input2'],
-            // tickInterval: 1000
-        })
+            var chunk = new ESChunk({
+                id: 'IFRAME1',
+                target: 'iframe',
+                iframeId: 'iframe1',
+                contentIds: ['Content', 'Input1', 'Input2'],
+                // tickInterval: 1000
+            })
 
-        document.getElementById('Btn_Start').addEventListener('click', function () {
-            chunk.start();
-        })
+            document.getElementById('Btn_Start').addEventListener('click', function () {
+                chunk.start();
+            })
 
-        document.getElementById('Btn_End').addEventListener('click', function () {
-            chunk.stop();
+            document.getElementById('Btn_End').addEventListener('click', function () {
+                chunk.stop();
+            })
         })
     </script>
 </body>

@@ -1,5 +1,5 @@
-//重构
 (function (global) {
+    var readyCbs = [];
 
     //创建一个事件派发元素，用于跟contentScript传递事件
     var ES_Chunk_Div = document.createElement('div');
@@ -16,6 +16,10 @@
     //注册Destroy_ESChunk事件
     var Destroy_ESChunk_Event = document.createEvent('Event');
     Destroy_ESChunk_Event.initEvent('Destroy_ESChunk', true, true);
+
+    //注册ContentScriptReady事件
+    var ContentScriptReady_Event = document.createEvent('Event');
+    ContentScriptReady_Event.initEvent('ContentScriptReady', true, true);
 
     //构造函数
     function ESChunk(params) {
@@ -88,4 +92,17 @@
     }
 
     global.ESChunk = ESChunk;
+
+
+
+    global.ESChunkReady = function (cb) {
+        readyCbs.push(cb);
+    }
+
+    global.onESChunkContentScriptReady = function () {
+        (readyCbs || []).forEach(function (cb) {
+            cb();
+        });
+    }
+
 })(this);
