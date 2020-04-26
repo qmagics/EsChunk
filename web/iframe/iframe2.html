@@ -14,16 +14,27 @@
     <button id="Btn_Start">开始</button>
     <button id="Btn_End">结束</button>
     <p id="Content" style="width:200px;height:40px;border:1px solid rgb(161, 219, 241);"></p>
+    <input type="text" id="Input1">
+    <input type="text" id="Input2">
 
-    <!-- <script>
-        document.getElementById('Btn_Start').addEventListener('click',function(){
-            top.ESChunk.start();
-        });
+    <script>
+        var ESChunk = top.ESChunk || ESChunk;
 
-        document.getElementById('Btn_End').addEventListener('click',function(){
-            top.ESChunk.stop();
-        });
-    </script> -->
+        var chunk = new ESChunk({
+            id: 'IFRAME2',
+            target: 'iframe',
+            iframeId: 'iframe2',
+            contentIds: ['Content', 'Input1', 'Input2']
+        })
+
+        document.getElementById('Btn_Start').addEventListener('click', function () {
+            chunk.start();
+        })
+
+        document.getElementById('Btn_End').addEventListener('click', function () {
+            chunk.stop();
+        })
+    </script>
 </body>
 
 </html>
